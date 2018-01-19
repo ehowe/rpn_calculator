@@ -36,7 +36,7 @@ module Rpn
         # if the user only specified 2 arguments, we can assume they want to operate on the last returned value
         user_input = "#{last_value} #{user_input}" if last_value && user_input.split.length == 2
 
-        last_value = Rpn::Main.process(user_input)
+        @last_value = Rpn::Main.process(user_input)
         puts last_value
       rescue InvalidOperandError, InvalidOperatorError, TooManyArgumentsError, NotEnoughArgumentsError => e
         $stderr.puts e.message
